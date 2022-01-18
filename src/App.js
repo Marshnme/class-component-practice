@@ -1,10 +1,10 @@
-import logo from './logo.svg';
+
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <h1>FIRST PUSH2</h1>
+      <button class="btn btn-danger">danger</button>
     </div>
   );
 }

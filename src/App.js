@@ -1,10 +1,10 @@
 
 import './App.css';
-
+import NavBar from "./NavBar"
 function App() {
   return (
     <div className="App">
-      <button class="btn btn-danger">danger</button>
+      <NavBar/>
     </div>
   );
 }

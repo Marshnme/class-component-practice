@@ -7,7 +7,7 @@ class MainContent extends Component{
                 pageTitle:"Customers",
                 customersCount: 5,
                 customers:[
-                    {id:1,name:"Sosh",phone:null,address:{city:"Columbia"},photo:"https://picsum.photos/id/1010/60"},
+                    {id:1,name:"Josh",phone:null,address:{city:"Columbia"},photo:"https://picsum.photos/id/1010/60"},
                     {id:2,name:"Clara",phone:"123-123-123",address:{city:"Columbia"},photo:"https://picsum.photos/id/1011/60"},
                     {id:3,name:"Finn",phone:"123-123-123",address:{city:"Columbia"},photo:"https://picsum.photos/id/1025/60"},
                     {id:4,name:"Emma",phone:null,address:{city:"Columbia"},photo:"https://picsum.photos/id/1014/60"},
@@ -25,6 +25,18 @@ class MainContent extends Component{
        return cust.phone ? (cust.phone) : (<div className="bg-warning text-center p-2">No Phone</div>) 
     }
 
+    customerNameStyle= (custName) =>{
+            if(custName.startsWith("E")){
+                return "green-highlight border-start"
+            }else if(custName.startsWith("J")){
+                return "darkgreen-highlight border-start"
+            }else{
+                return ""
+            }
+        }
+
+
+
     getCustomerInfo = () =>{
         return(
             this.state.customers.map((cust) => {
@@ -32,7 +44,7 @@ class MainContent extends Component{
                     <tr key={cust.id}>
                         <td>{cust.id}</td>
                         <td><img src={cust.photo} alt="Customer"></img></td>
-                        <td style={{backgroundColor:(cust.name.startsWith("S")) ? "green" : "red"}}>{cust.name}</td>
+                        <td className={this.customerNameStyle(cust.name)}>{cust.name}</td>
                         <td>{this.getPhoneToRender(cust)}</td>
                         <td>{cust.address.city}</td>
                     </tr>
@@ -40,6 +52,8 @@ class MainContent extends Component{
             })
         )
     }
+
+    
 
     render(){
         return(

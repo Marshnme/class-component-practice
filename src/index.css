@@ -17,3 +17,11 @@ code {
 .navbar-style {
   background-color: #1d681a !important ;
 }
+
+.darkgreen-highlight {
+  color: darkgreen;
+}
+
+.green-highlight {
+  color: green;
+}

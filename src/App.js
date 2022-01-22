@@ -1,12 +1,17 @@
 
+import React,{ Component } from 'react';
 import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <button class="btn btn-danger">danger</button>
-    </div>
-  );
+import MainContent from './MainContent';
+import NavBar from "./NavBar"
+class App extends Component{
+  render(){
+    return(
+      <>
+        <NavBar/>
+        <MainContent/>
+      </>
+    )
+  }
 }
 
 export default App;

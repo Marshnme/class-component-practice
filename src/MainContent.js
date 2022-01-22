@@ -7,10 +7,10 @@ class MainContent extends Component{
                 pageTitle:"Customers",
                 customersCount: 5,
                 customers:[
-                    {id:1,name:"Josh",phone:null,address:{city:"Columbia"}},
-                    {id:2,name:"Clara",phone:"123-123-123",address:{city:"Columbia"}},
-                    {id:3,name:"Finn",phone:"123-123-123",address:{city:"Columbia"}},
-                    {id:4,name:"Emma",phone:null,address:{city:"Columbia"}},
+                    {id:1,name:"Sosh",phone:null,address:{city:"Columbia"},photo:"https://picsum.photos/id/1010/60"},
+                    {id:2,name:"Clara",phone:"123-123-123",address:{city:"Columbia"},photo:"https://picsum.photos/id/1011/60"},
+                    {id:3,name:"Finn",phone:"123-123-123",address:{city:"Columbia"},photo:"https://picsum.photos/id/1025/60"},
+                    {id:4,name:"Emma",phone:null,address:{city:"Columbia"},photo:"https://picsum.photos/id/1014/60"},
                 ]
             };
     
@@ -19,6 +19,26 @@ class MainContent extends Component{
         this.setState({
             customersCount:"7"
         })
+    }
+
+    getPhoneToRender = (cust) => {
+       return cust.phone ? (cust.phone) : (<div className="bg-warning text-center p-2">No Phone</div>) 
+    }
+
+    getCustomerInfo = () =>{
+        return(
+            this.state.customers.map((cust) => {
+                return(
+                    <tr key={cust.id}>
+                        <td>{cust.id}</td>
+                        <td><img src={cust.photo} alt="Customer"></img></td>
+                        <td style={{backgroundColor:(cust.name.startsWith("S")) ? "green" : "red"}}>{cust.name}</td>
+                        <td>{this.getPhoneToRender(cust)}</td>
+                        <td>{cust.address.city}</td>
+                    </tr>
+                ) 
+            })
+        )
     }
 
     render(){
@@ -33,22 +53,14 @@ class MainContent extends Component{
                     <thead>
                         <tr>
                             <th>#</th>
+                            <th>Photo</th>
                             <th>Customer Name</th>
                             <th>Phone</th>
                             <th>City</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {this.state.customers.map((cust) => {
-                            return(
-                                <tr key={cust.id}>
-                                    <td>{cust.id}</td>
-                                    <td>{cust.name}</td>
-                                    <td>{cust.phone ? (cust.phone) : (<div className="bg-warning text-center p-2">No Phone</div>) }</td>
-                                    <td>{cust.address.city}</td>
-                                </tr>
-                            ) 
-                        })}
+                        {this.getCustomerInfo()}
                     </tbody>
                 </table>
             </div>

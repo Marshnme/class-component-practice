@@ -1,7 +1,7 @@
 import React,{ Component } from "react";
 
 
-class MainContent extends Component{
+class CustomerList extends Component{
 
     state = {
                 pageTitle:"Customers",
@@ -25,26 +25,35 @@ class MainContent extends Component{
        return cust.phone ? (cust.phone) : (<div className="bg-warning text-center p-2">No Phone</div>) 
     }
 
-    customerNameStyle= (custName) =>{
-            if(custName.startsWith("E")){
-                return "green-highlight border-start"
-            }else if(custName.startsWith("J")){
-                return "darkgreen-highlight border-start"
-            }else{
-                return ""
-            }
-        }
+
+            // DEMONSTRTATION OF CONDITIONALLY RENDERING STYLES
+    // customerNameStyle= (custName) =>{
+    //         if(custName.startsWith("E")){
+    //             return "green-highlight border-start"
+    //         }else if(custName.startsWith("J")){
+    //             return "darkgreen-highlight border-start"
+    //         }else{
+    //             return ""
+    //         }
+    //     }
 
 
-
+  
     getCustomerInfo = () =>{
         return(
-            this.state.customers.map((cust) => {
+            this.state.customers.map((cust,index) => {
                 return(
                     <tr key={cust.id}>
                         <td>{cust.id}</td>
-                        <td><img src={cust.photo} alt="Customer"></img></td>
-                        <td className={this.customerNameStyle(cust.name)}>{cust.name}</td>
+                        <td>
+                            <img src={cust.photo} alt="Customer"></img>
+                            <div>
+                                <button className="btn btn-sm btn-secondary" onClick={() => {
+                                    this.onChangePictureClick(cust,index)
+                                }}>Change Picture</button>
+                            </div>
+                        </td>
+                        <td>{cust.name}</td>
                         <td>{this.getPhoneToRender(cust)}</td>
                         <td>{cust.address.city}</td>
                     </tr>
@@ -53,6 +62,18 @@ class MainContent extends Component{
         )
     }
 
+    // updates picture on click
+    onChangePictureClick = (cust,index) => {
+
+            // grabs entire array of customers
+            let custArr = this.state.customers;
+            // selects the single customer with index and updates only the photo
+            custArr[index].photo = "https://picsum.photos/id/104/60"
+            // updates customer array with new picture
+            this.setState({
+                customers:custArr
+            })     
+        }
     
 
     render(){
@@ -82,4 +103,4 @@ class MainContent extends Component{
     }
 }
 
-export default MainContent;
+export default CustomerList;

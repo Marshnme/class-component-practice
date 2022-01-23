@@ -1,7 +1,7 @@
 import React,{ Component } from "react";
 
 
-class MainContent extends Component{
+class CustomerList extends Component{
 
     state = {
                 pageTitle:"Customers",
@@ -103,4 +103,4 @@ class MainContent extends Component{
     }
 }
 
-export default MainContent;
+export default CustomerList;

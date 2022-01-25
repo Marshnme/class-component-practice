@@ -19,10 +19,12 @@ class ShoppingCart extends Component{
         let index = allProducts.indexOf(prod)
         if(allProducts[index].quantity < max){
             allProducts[index].quantity++
-        }
-        this.setState({
+
+            this.setState({
             products:allProducts
         })
+        }
+        
     }
 
     handleDecrement = (prod,min) => {
@@ -30,10 +32,13 @@ class ShoppingCart extends Component{
         let index = allProducts.indexOf(prod)
         if(allProducts[index].quantity != min){
             allProducts[index].quantity--
-        }
-        this.setState({
+
+            this.setState({
             products:allProducts
         })
+        }
+
+        
     }
 
 

@@ -14,19 +14,23 @@ class ShoppingCart extends Component{
     ]}
 
 
-    handleIncrement = (prod) => {
+    handleIncrement = (prod,max) => {
         let allProducts = [...this.state.products];
         let index = allProducts.indexOf(prod)
-        allProducts[index].quantity++
+        if(allProducts[index].quantity < max){
+            allProducts[index].quantity++
+        }
         this.setState({
             products:allProducts
         })
     }
 
-    handleDecrement = (prod) => {
+    handleDecrement = (prod,min) => {
         let allProducts = [...this.state.products];
         let index = allProducts.indexOf(prod)
-        allProducts[index].quantity--
+        if(allProducts[index].quantity != min){
+            allProducts[index].quantity--
+        }
         this.setState({
             products:allProducts
         })

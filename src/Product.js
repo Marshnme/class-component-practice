@@ -18,8 +18,8 @@ class Product extends Component{
                         <div className="float-start">
                             <span className="badge bg-light text-dark me-3">{this.state.product.quantity}</span>
                             <div className="btn-group">
-                                <button className="btn btn-outline-success" onClick={() => {this.props.handleIncrement(this.state.product)}}>+</button>
-                                <button className="btn btn-outline-success" onClick={() => {this.props.handleDecrement(this.state.product)}}>-</button>
+                                <button className="btn btn-outline-success" onClick={() => {this.props.handleIncrement(this.state.product,10)}}>+</button>
+                                <button className="btn btn-outline-success" onClick={() => {this.props.handleDecrement(this.state.product,0)}}>-</button>
                             </div>
                         </div>
                         <div className="float-end">

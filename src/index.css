@@ -25,3 +25,7 @@ code {
 .green-highlight {
   color: green;
 }
+
+.hand-icon {
+  cursor: pointer;
+}

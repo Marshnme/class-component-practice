@@ -24,8 +24,8 @@ class ShoppingCart extends Component{
             products:allProducts
         })
         }
-        
     }
+
 
     handleDecrement = (prod,min) => {
         let allProducts = [...this.state.products];
@@ -37,8 +37,17 @@ class ShoppingCart extends Component{
             products:allProducts
         })
         }
+    }
 
-        
+    handleDelete = (prod) =>{
+        let allProducts = [...this.state.products];
+        let index = allProducts.indexOf(prod)
+
+        allProducts.splice(index,1)
+
+        this.setState({
+            products:allProducts,
+        })
     }
 
 
@@ -49,7 +58,7 @@ class ShoppingCart extends Component{
 
                 <div className="row">
                     {this.state.products.map((product) => {
-                        return <Product key={product.id} product={product} handleIncrement={this.handleIncrement} handleDecrement={this.handleDecrement}>
+                        return <Product key={product.id} product={product} handleIncrement={this.handleIncrement} handleDecrement={this.handleDecrement} handleDelete={this.handleDelete}>
                                 <button className="btn btn-primary">Buy Now</button>
                             </Product>
                     })}

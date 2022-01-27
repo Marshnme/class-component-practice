@@ -73,9 +73,16 @@ class ShoppingCart extends Component{
     }
 
     // runs after  constructor and render method. Good for HTTPS requests
-    componentDidCatch(){
+    componentDidMount(){
 
     }
+    
+    // runs after didMount and only when changes are made
+    componentDidUpdate(prevProps,prevState){
+    
+    }
 }
+
+
 
 export default ShoppingCart;

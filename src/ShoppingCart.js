@@ -86,6 +86,11 @@ class ShoppingCart extends Component{
     componentWillUnmount(){
 
     };
+
+    componentDidCatch(error,info){
+        console.log("error", error,info)
+        localStorage.lastError = `${error}/n${JSON.stringify(info)}`
+    }
 }
 
 

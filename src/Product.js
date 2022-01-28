@@ -49,6 +49,10 @@ class Product extends Component{
     }
 
     componentWillUnmount(){
+
+    }
+
+    componentDidCatch(error,info){
         
     }
 }

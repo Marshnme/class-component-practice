@@ -1,9 +1,13 @@
 import React,{Component} from "react";
 
 class Product extends Component{
-    state={
+    constructor(props){
+        super(props)
+        this.state={
             product: this.props.product,
-        }
+        }   
+    }
+    
 
     render(){
         return(
@@ -34,6 +38,18 @@ class Product extends Component{
                 </div>
             </div>
         )
+    }
+
+    componentDidMount(){
+
+    }
+
+    componentDidUpdate(){
+
+    }
+
+    componentWillUnmount(){
+        
     }
 }
 

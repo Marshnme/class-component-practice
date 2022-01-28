@@ -35,7 +35,7 @@ class ShoppingCart extends Component{
     handleDecrement = (prod,min) => {
         let allProducts = [...this.state.products];
         let index = allProducts.indexOf(prod)
-        if(allProducts[index].quantity != min){
+        if(allProducts[index].quantity !== min){
             allProducts[index].quantity--
 
             this.setState({
@@ -73,9 +73,25 @@ class ShoppingCart extends Component{
     }
 
     // runs after  constructor and render method. Good for HTTPS requests
-    componentDidCatch(){
+    componentDidMount(){
 
+    };
+    
+    // runs after didMount and only when changes are made
+    componentDidUpdate(prevProps,prevState){
+    
+    };
+
+    // runs when current component is being deleted from memory. ex. moving to another hyperlink or deleting specific product
+    componentWillUnmount(){
+
+    };
+
+    componentDidCatch(error,info){
+        console.log("error", error,info)
+        localStorage.lastError = `${error}/n${JSON.stringify(info)}`
     }
 }
+
 
 export default ShoppingCart;

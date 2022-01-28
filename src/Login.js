@@ -7,11 +7,17 @@ class Login extends Component{
         this.state={
             email:"",
             password:"",
+            message:"",
         }
     }
 
     onLoginClick = () =>{
-        console.log(this.state)
+        if(this.state.email === "123" && this.state.password === "123"){
+            // success
+            this.setState({message:<span className="me-2 text-success">Successfully Logged-in</span>,})
+        }else{
+            this.setState({message:<span className=" me-2 text-warning">Login Fail</span>,})
+        }
     }
 
 
@@ -30,7 +36,8 @@ class Login extends Component{
                 <input type="password" className="form-control" value={this.state.password} onChange={(e)=>{this.setState({password:e.target.value})}}></input>
             </div>
 
-            <div className="m-2">
+            <div className="m-2 float-end">
+                {this.state.message}
                 <button className="btn btn-primary" onClick={this.onLoginClick}>Login</button>
             </div>
 

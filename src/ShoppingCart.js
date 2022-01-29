@@ -7,12 +7,7 @@ class ShoppingCart extends Component{
         super(props)
         this.state={
         products:[
-            {id:1,productName:"Iphone",price:200,quantity:5},
-            {id:2,productName:"Android",price:200,quantity:2},
-            {id:3,productName:"Speaker",price:200,quantity:6},
-            {id:4,productName:"Charger-Iphone",price:200,quantity:1},
-            {id:5,productName:"Charger-Android",price:200,quantity:7},
-            {id:6,productName:"Headphones",price:200,quantity:10},
+            
     ]}
     }
 
@@ -73,8 +68,11 @@ class ShoppingCart extends Component{
     }
 
     // runs after  constructor and render method. Good for HTTPS requests
-    componentDidMount(){
+    componentDidMount = async() => {
 
+        let response = await fetch("http://localhost:5000/products",{method:"GET"});
+        let prods = await response.json()
+        this.setState({products:prods})
     };
     
     // runs after didMount and only when changes are made

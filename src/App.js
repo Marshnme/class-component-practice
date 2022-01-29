@@ -11,8 +11,8 @@ class App extends Component{
     return(
       <>
         <NavBar/>
-        {/* <Login/> */}
-        <ShoppingCart x="10"/>
+        <Login/>
+        {/* <ShoppingCart x="10"/> */}
       </>
     )
   }

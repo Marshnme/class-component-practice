@@ -5,14 +5,16 @@ class Login extends Component{
     constructor(props){
         super(props)
         this.state={
-            email:"",
-            password:"",
-            message:"",
         }
     }
 
-    onLoginClick = () =>{
-        if(this.state.email === "123" && this.state.password === "123"){
+    onLoginClick = async() =>{
+
+        let response = await fetch(`http://localhost:5000/users?email=${this.state.email}&password=${this.state.password}`,{method:"GET"});
+        let body = await response.json()
+
+
+        if(body.length>0){
             // success
             this.setState({message:<span className="me-2 text-success">Successfully Logged-in</span>,})
         }else{
@@ -44,6 +46,9 @@ class Login extends Component{
         </div>
         )
     }
+
+    componentDidMount = async() => {
+    };
 }
 
 export default Login;   

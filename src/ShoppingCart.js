@@ -68,14 +68,11 @@ class ShoppingCart extends Component{
     }
 
     // runs after  constructor and render method. Good for HTTPS requests
-    componentDidMount(){
-        let promise=fetch("http://localhost:5000/products",{method:"GET"});
-        promise.then((res) =>{
-            let promise2 = res.json()
-            promise2.then((prods) =>{
-                this.setState({products:prods})
-            })
-        })
+    componentDidMount = async() => {
+
+        let response = await fetch("http://localhost:5000/products",{method:"GET"});
+        let prods = await response.json()
+        this.setState({products:prods})
     };
     
     // runs after didMount and only when changes are made
